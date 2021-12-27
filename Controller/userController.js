@@ -8,3 +8,11 @@ exports.getUsers = async(req, res) => {
         res.status(404).json(error)
     }
 }
+
+exports.addUser = async(req, res) => {
+    try {
+        console.log(`user ${req.body.username}`)
+    } catch (error) {
+        res.status(404).json(error)
+    }
+}
