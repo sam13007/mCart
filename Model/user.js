@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/mcart', {
+mongoose.connect("mongodb://localhost:27017/mcart", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 
@@ -29,6 +29,6 @@ const userSchema = new mongoose.Schema({
     }
 })
 
-const user = mongoose.model('users', userSchema)
+const user = mongoose.model("user", userSchema)
 
 module.exports = user;
