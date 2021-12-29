@@ -6,6 +6,9 @@ mongoose.connect("mongodb://localhost:27017/mcart", {
 
 }).then(() => { console.log("connected to mcart DB") })
 
+
+
+
 const userSchema = new mongoose.Schema({
     userName: {
         type: String,
