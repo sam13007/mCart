@@ -8,14 +8,6 @@ exports.signup = async(req, res) => {
 
             res.status(201).json({ "message": "User already registered" })
 
-        } else if (req.body.password.length < 5) {
-
-            res.status(201).json({ "message": "Minimum 5 characters should be there in password" })
-
-        } else if (req.body.password.length != 10) {
-
-            res.status(201).json({ "message": "Phone number should be 10 digits" })
-
         } else {
             var userSignup = await user.create({
                 userName: req.body.userName,
@@ -30,9 +22,7 @@ exports.signup = async(req, res) => {
         }
 
     } catch (error) {
-        res.status(404).json(error)
-        console.log(error)
-
+        res.status(404).send(error.message)
     }
 }
 
@@ -48,7 +38,6 @@ exports.login = async(req, res) => {
             res.status(200).json(userLogin)
         }
     } catch (error) {
-        res.status(404).json(error)
-        console.log(error);
+        res.status(404).send(error.message)
     }
 }
