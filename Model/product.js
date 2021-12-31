@@ -4,7 +4,7 @@ mongoose.connect("mongodb://localhost:27017/mcart", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 
-}).then(() => { console.log("connected to mcart DB") })
+}).then(() => { console.log("connected to product collection") })
 
 const productSchema = new mongoose.Schema({
     productId: {

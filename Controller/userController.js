@@ -9,12 +9,7 @@ exports.signup = async(req, res) => {
             res.status(201).json({ "message": "User already registered" })
 
         } else {
-            var userSignup = await user.create({
-                userName: req.body.userName,
-                password: req.body.password,
-                phoneNumber: req.body.phoneNumber,
-                email: req.body.email
-            })
+            var userSignup = await user.create(req.body)
             console.log(`length : ${req.body.password.length}`)
         }
         if (userSignup) {
