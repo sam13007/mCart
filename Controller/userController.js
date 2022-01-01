@@ -23,15 +23,15 @@ exports.signup = async(req, res) => {
 
 exports.login = async(req, res) => {
     try {
-        const userLogin = await user.find({
-            userName: req.params.userName,
-            password: req.params.password
-        })
-        if (userLogin.length === 0) {
-            res.status(200).send("Provided username or password incorrect")
+        const userLogin = await user.find({ userName: req.body.username, password: req.body.password });
+
+        if (userLogin.length != 0) {
+            res.status(200).json({ "login": true })
         } else {
-            res.status(200).json(userLogin)
+            res.status(200).json({ "login": false })
         }
+
+
     } catch (error) {
         res.status(404).send(error.message)
     }

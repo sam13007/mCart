@@ -1,10 +1,12 @@
 const express = require("express")
 const user = require("../Controller/userController")
 const product = require("../Controller/productController")
+const cart = require("../Controller/cartController")
+
 const router = express.Router()
 
 //Users
-router.get("/login/:userName/:password", user.login)
+router.get("/login", user.login)
 
 router.post("/signup", user.signup)
 
@@ -15,8 +17,10 @@ router.get("/tablets", product.getTablets)
 
 router.post("/product", product.addProduct)
 
-//invalid methods
+//Carts
+router.get("/carts", cart.getCart)
 
+//invalid methods
 router.all("/*", (req, res) => [
     res.send("invalid method")
 ])
