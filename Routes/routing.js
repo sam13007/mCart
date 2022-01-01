@@ -20,6 +20,8 @@ router.post("/product", product.addProduct)
 //Carts
 router.get("/carts", cart.getCart)
 
+router.post("/carts", cart.postCart)
+
 //invalid methods
 router.all("/*", (req, res) => [
     res.send("invalid method")
