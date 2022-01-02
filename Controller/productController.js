@@ -26,3 +26,19 @@ exports.addProduct = async(req, res) => {
         res.status(404).send(error)
     }
 }
+
+exports.removeProduct = async(req, res) => {
+    try {
+        const productExist = await product.find({ productId: req.params.prod })
+
+        if (productExist.length != 0) {
+            const productDel = await product.findOneAndRemove({ productId: req.params.prod })
+            res.status(200).json({ "message": "Product removed successfully" })
+        } else {
+            res.status(201).json({ "message": "Product not available" })
+        }
+
+    } catch (error) {
+        res.status(404).send(error)
+    }
+}

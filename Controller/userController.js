@@ -10,7 +10,7 @@ exports.signup = async(req, res) => {
 
         } else {
             var userSignup = await user.create(req.body)
-            console.log(`length : ${req.body.password.length}`)
+
         }
         if (userSignup) {
             res.status(200).json({ "message": `User Registered with Name:${userSignup.userName}` })

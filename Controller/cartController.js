@@ -44,7 +44,7 @@ exports.updateCart = async(req, res) => {
 
         } else {
 
-            res.status(200).json({ "message": "User's cart is not available" })
+            res.status(201).json({ "message": "User's cart is not available" })
         }
     } catch (error) {
         res.status(404).send(error)

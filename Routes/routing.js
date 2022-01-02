@@ -18,6 +18,8 @@ router.get("/tablets", product.getTablets)
 
 router.post("/product", product.addProduct)
 
+router.delete("/products/:prod", product.removeProduct)
+
 //Carts
 router.get("/carts", cart.getCart)
 
