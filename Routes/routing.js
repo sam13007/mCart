@@ -22,9 +22,10 @@ router.get("/carts", cart.getCart)
 
 router.post("/carts", cart.postCart)
 
-//invalid methods
+router.put("/carts/:userName", cart.updateCart)
+    //invalid methods
 router.all("/*", (req, res) => [
-    res.send("invalid method")
+    res.status(200).json({ "message": "Resource not found" })
 ])
 
 module.exports = router

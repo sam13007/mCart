@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-
+const user = require('./user')
 mongoose.connect("mongodb://localhost:27017/mcart", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -13,6 +13,7 @@ const cartSchema = new mongoose.Schema({
     userName: {
         type: String,
         required: [true, "Required value"],
+        validate: [userVal, "Invalid user"]
     },
     productsInCart: {
         type: [{
@@ -24,7 +25,8 @@ const cartSchema = new mongoose.Schema({
     },
     statusOfCart: {
         type: String,
-        required: [true, "Required value"],
+        default: "Open"
+
     }
 }, {
     timestamps: {
@@ -33,5 +35,11 @@ const cartSchema = new mongoose.Schema({
     }
 })
 
+async function userVal(value) {
+    const userExist = await user.find({ userName: value })
+
+
+    return userExist.length != 0
+}
 const cart = mongoose.model("cart", cartSchema)
 module.exports = cart
