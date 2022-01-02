@@ -2,6 +2,7 @@ const express = require("express")
 const user = require("../Controller/userController")
 const product = require("../Controller/productController")
 const cart = require("../Controller/cartController")
+const order = require("../Controller/orderController")
 
 const router = express.Router()
 
@@ -23,7 +24,15 @@ router.get("/carts", cart.getCart)
 router.post("/carts", cart.postCart)
 
 router.put("/carts/:userName", cart.updateCart)
-    //invalid methods
+
+//Order
+router.post("/orders/:userName", order.postOrder)
+
+//Order methods
+router.get("/order", order.getOrder)
+
+
+//invalid methods
 router.all("/*", (req, res) => [
     res.status(200).json({ "message": "Resource not found" })
 ])
